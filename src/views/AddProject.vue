@@ -44,6 +44,7 @@
 
 <script>
 import { pushScopeId } from "vue";
+import axiosInstance from "../../database/api.js";
 export default {
   data() {
     return {
@@ -59,13 +60,14 @@ export default {
         description: this.projectDescription,
       };
 
-      fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
+      axiosInstance
+        .get(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
         .then((response) => {
           return response.json();
         })

@@ -14,6 +14,7 @@
 <script>
 import FilterNav from "../components/FilterNav";
 import SingleProject from "../components/SingleProject";
+import axiosInstance from "../../database/api.js";
 
 export default {
   components: {
@@ -58,7 +59,8 @@ export default {
     },
   },
   mounted() {
-    fetch("http://157.230.42.225/api/projects")
+    axiosInstance
+      .get("http://157.230.42.225/api/projects")
       .then((resources) => {
         return resources.json();
       })
