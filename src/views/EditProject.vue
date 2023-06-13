@@ -43,7 +43,6 @@
 </template>
 
 <script>
-import axiosInstance from "../../api";
 export default {
   props: ["id"],
   data() {
@@ -54,8 +53,7 @@ export default {
   },
 
   mounted() {
-    axiosInstance
-      .get("http://157.230.42.225/api/projects/" + this.id)
+    fetch("http://157.230.42.225/api/projects/" + this.id)
       .then((resource) => {
         return resource.json();
       })
@@ -70,17 +68,15 @@ export default {
         name: this.projectName,
         description: this.projectDescription,
       };
-      axiosInstance
-        .get("http://157.230.42.225/api/projects/" + this.id, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updateData),
-        })
-        .then(() => {
-          this.$router.push("/");
-        });
+      fetch("http://157.230.42.225/api/projects/" + this.id, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateData),
+      }).then(() => {
+        this.$router.push("/");
+      });
     },
   },
 };
