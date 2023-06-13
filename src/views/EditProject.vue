@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import axiosInstance from "../../database/api.js";
+import axiosInstance from "../../api";
 export default {
   props: ["id"],
   data() {

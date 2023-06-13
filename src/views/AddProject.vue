@@ -44,7 +44,7 @@
 
 <script>
 import { pushScopeId } from "vue";
-import axiosInstance from "../../database/api.js";
+import axiosInstance from "../../api";
 export default {
   data() {
     return {

@@ -14,7 +14,7 @@
 <script>
 import FilterNav from "../components/FilterNav";
 import SingleProject from "../components/SingleProject";
-import axiosInstance from "../../database/api.js";
+import axiosInstance from "../../api";
 
 export default {
   components: {
