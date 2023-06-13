@@ -53,7 +53,7 @@ export default {
   },
 
   mounted() {
-    fetch("http://127.0.0.1:8000/api/projects/" + this.id)
+    fetch("http://157.230.42.225/api/projects/" + this.id)
       .then((resource) => {
         return resource.json();
       })
@@ -68,7 +68,7 @@ export default {
         name: this.projectName,
         description: this.projectDescription,
       };
-      fetch("http://127.0.0.1:8000/api/projects/" + this.id, {
+      fetch("http://157.230.42.225/api/projects/" + this.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",

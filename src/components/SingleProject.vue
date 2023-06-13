@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       showDescription: false,
-      baseUrl: "http://127.0.0.1:8000/api/projects/",
+      baseUrl: "http://157.230.42.225/api/projects/",
     };
   },
   methods: {

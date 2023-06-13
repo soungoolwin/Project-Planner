@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     createProject() {
-      const endpoint = "http://127.0.0.1:8000/api/projects";
+      const endpoint = "http://157.230.42.225/api/projects";
       const formData = {
         name: this.projectName,
         description: this.projectDescription,

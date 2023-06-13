@@ -58,7 +58,7 @@ export default {
     },
   },
   mounted() {
-    fetch("http://127.0.0.1:8000/api/projects")
+    fetch("http://157.230.42.225/api/projects")
       .then((resources) => {
         return resources.json();
       })
