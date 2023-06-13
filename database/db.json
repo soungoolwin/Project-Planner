@@ -4,13 +4,19 @@
       "name": "Project 1",
       "description": "This is project 1",
       "id": 1,
-      "IsComplete": true
+      "IsComplete": false
     },
     {
-      "name": "Project 2",
-      "description": "THis is Project 2",
+      "name": "Project 2 update",
+      "description": "THis is Project 2 update",
       "id": 2,
       "IsComplete": false
+    },
+    {
+      "name": "Project 3",
+      "description": "Project 3",
+      "id": 3,
+      "IsComplete": true
     }
   ]
 }

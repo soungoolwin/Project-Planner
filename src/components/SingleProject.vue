@@ -20,7 +20,9 @@
       </p>
       <div class="mt-4">
         <i class="mr-3 fa-solid fa-check" @click="toggleIsComplete()"></i>
-        <i class="mr-3 fa-solid fa-pen-to-square"></i>
+        <router-link :to="`/edit-project/${project.id}`"
+          ><i class="mr-3 fa-solid fa-pen-to-square"></i
+        ></router-link>
         <i class="mr-3 fa-solid fa-trash" @click="Delete()"></i>
       </div>
     </div>
@@ -35,7 +37,7 @@ export default {
   data() {
     return {
       showDescription: false,
-      baseUrl: "http://localhost:3000/projects/",
+      baseUrl: "http://127.0.0.1:8000/api/projects/",
     };
   },
   methods: {

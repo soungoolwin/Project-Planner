@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <div v-for="project in projects" :key="project.id" class="mt-5">
+    <FilterNav :currentSubNav="currentSubNav" @filteredValue="filteredValue" />
+    <div v-for="project in filteredProjects" :key="project.id" class="mt-5">
       <SingleProject
         :project="project"
         @isCompleteToggle="isCompleteToggle"
@@ -11,14 +12,18 @@
 </template>
 
 <script>
+import FilterNav from "../components/FilterNav";
 import SingleProject from "../components/SingleProject";
+
 export default {
   components: {
+    FilterNav,
     SingleProject,
   },
   data() {
     return {
       projects: [],
+      currentSubNav: "All",
     };
   },
   methods: {
@@ -33,9 +38,27 @@ export default {
         return project.id !== id;
       });
     },
+    filteredValue(value) {
+      this.currentSubNav = value;
+    },
+  },
+  computed: {
+    filteredProjects() {
+      if (this.currentSubNav === "Ongoing") {
+        return this.projects.filter((project) => {
+          return !project.IsComplete;
+        });
+      }
+      if (this.currentSubNav === "Complete") {
+        return this.projects.filter((project) => {
+          return project.IsComplete;
+        });
+      }
+      return this.projects;
+    },
   },
   mounted() {
-    fetch("http://localhost:3000/projects")
+    fetch("http://127.0.0.1:8000/api/projects")
       .then((resources) => {
         return resources.json();
       })

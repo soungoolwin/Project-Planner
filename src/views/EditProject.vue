@@ -2,7 +2,7 @@
   <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
     <div class="p-6">
       <h2 class="text-xl font-semibold mb-4">New Project</h2>
-      <form @submit.prevent="createProject">
+      <form @submit.prevent="updateProject">
         <div class="mb-4">
           <label
             for="project-name"
@@ -43,35 +43,40 @@
 </template>
 
 <script>
-import { pushScopeId } from "vue";
 export default {
+  props: ["id"],
   data() {
     return {
       projectName: "",
       projectDescription: "",
     };
   },
+
+  mounted() {
+    fetch("http://127.0.0.1:8000/api/projects/" + this.id)
+      .then((resource) => {
+        return resource.json();
+      })
+      .then((data) => {
+        this.projectName = data.name;
+        this.projectDescription = data.description;
+      });
+  },
   methods: {
-    createProject() {
-      const endpoint = "http://127.0.0.1:8000/api/projects";
-      const formData = {
+    updateProject() {
+      const updateData = {
         name: this.projectName,
         description: this.projectDescription,
       };
-
-      fetch(endpoint, {
-        method: "POST",
+      fetch("http://127.0.0.1:8000/api/projects/" + this.id, {
+        method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then(() => {
-          this.$router.push("/");
-        });
+        body: JSON.stringify(updateData),
+      }).then(() => {
+        this.$router.push("/");
+      });
     },
   },
 };
