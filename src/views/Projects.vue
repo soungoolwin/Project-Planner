@@ -58,7 +58,7 @@ export default {
     },
   },
   mounted() {
-    fetch("http://157.230.42.225/api/projects")
+    fetch("https://www.technophilialab.social/api/projects")
       .then((resources) => {
         return resources.json();
       })

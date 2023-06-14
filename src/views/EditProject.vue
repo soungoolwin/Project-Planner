@@ -53,7 +53,7 @@ export default {
   },
 
   mounted() {
-    fetch("http://157.230.42.225/api/projects/" + this.id)
+    fetch("https://www.technophilialab.social/api/projects/" + this.id)
       .then((resource) => {
         return resource.json();
       })
