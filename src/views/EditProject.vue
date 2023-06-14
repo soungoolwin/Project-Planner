@@ -68,7 +68,7 @@ export default {
         name: this.projectName,
         description: this.projectDescription,
       };
-      fetch("http://157.230.42.225/api/projects/" + this.id, {
+      fetch("https://technophilialab.social/api/projects/" + this.id, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
