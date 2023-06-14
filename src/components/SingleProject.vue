@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       showDescription: false,
-      baseUrl: "http://157.230.42.225/api/projects/",
+      baseUrl: "https://technophilialab.social/api/projects/",
     };
   },
   methods: {
